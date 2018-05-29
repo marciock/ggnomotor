@@ -12,15 +12,15 @@ $myDir='http://localhost/ggnomotor/assets/documentos/'.$_POST['tipo'].'/';
 $myArray=explode('.', $_FILES['arquivo']['name']);
 $extensions=end($myArray);
 
-$data="".date('Y-m-d').date('H').date('i').$extensions;
+$data="".date('Y-m-d').date('H').date('i').".".$extensions;
 //$uploadFile=$uploadDir.$_FILES['arquivo']['name'];
-$uploadFile=$uploadDir.$_POST['id_documentos'].$data;
-$correctPath=$myDir.$_FILES['arquivo']['name'];
-  move_uploaded_file($fileName,$uploadFile);
+$uploadFile=$uploadDir.$data;
+$correctPath=$myDir.$data;
+move_uploaded_file($fileName,$uploadFile);
 
 
-$data=date('Y-m-d');
-$post=[NULL,$data,$_POST['titulo'],$_POST['setor'],$_POST['chave'],$correctPath];
+$data_insert=date('Y-m-d');
+$post=[NULL,$data_insert,$_POST['titulo'],$_POST['setor'],$_POST['tipo'],$_POST['chave'],$correctPath];
 
 
 
@@ -30,11 +30,11 @@ $post=[NULL,$data,$_POST['titulo'],$_POST['setor'],$_POST['chave'],$correctPath]
    $service=new Lib\ServiceManager\ServiceManager;
 
 
- //$service->InsertController(['table'=>'documentos','fields'=>['id_documentos','data','titulo','id_setor','chave','arquivo'],'insert'=>$post]);
+ $service->InsertController(['table'=>'documentos','fields'=>['id_documentos','data','titulo','id_setor','tipo','chave','arquivo'],'insert'=>$post]);
 
 
 
-$teste=$correctPath;
+$teste=$post[2];
   $fp = fopen("teste.txt", "a");
    
   // Escreve "exemplo de escrita" no bloco1.txt
