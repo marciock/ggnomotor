@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 22-Maio-2018 às 08:17
+-- Generation Time: 02-Jun-2018 às 07:25
 -- Versão do servidor: 5.7.22-0ubuntu18.04.1
--- PHP Version: 7.1.11-0ubuntu2
+-- PHP Version: 7.2.5-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -28,12 +28,16 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `comites` (
   `id_comite` int(11) NOT NULL,
-  `titulo` text COLLATE utf8_general_mysql500_ci NOT NULL,
-  `id_tipo_comite` int(11) NOT NULL,
-  `chave` varchar(8) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `descricao` text COLLATE utf8_general_mysql500_ci NOT NULL,
-  `arquivo` text COLLATE utf8_general_mysql500_ci NOT NULL
+  `comite` varchar(80) COLLATE utf8_general_mysql500_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
+--
+-- Extraindo dados da tabela `comites`
+--
+
+INSERT INTO `comites` (`id_comite`, `comite`) VALUES
+(1, 'Lorem Ipsum'),
+(2, 'Ipsum contuer');
 
 -- --------------------------------------------------------
 
@@ -46,9 +50,18 @@ CREATE TABLE `documentos` (
   `data` date DEFAULT NULL,
   `titulo` text COLLATE utf8_general_mysql500_ci NOT NULL,
   `id_setor` int(11) NOT NULL,
+  `tipo` varchar(80) COLLATE utf8_general_mysql500_ci NOT NULL,
   `chave` varchar(8) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `arquivo` text COLLATE utf8_general_mysql500_ci NOT NULL
+  `arquivo` text COLLATE utf8_general_mysql500_ci NOT NULL,
+  `descricao` text COLLATE utf8_general_mysql500_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
+--
+-- Extraindo dados da tabela `documentos`
+--
+
+INSERT INTO `documentos` (`id_documentos`, `data`, `titulo`, `id_setor`, `tipo`, `chave`, `arquivo`, `descricao`) VALUES
+(2, '2018-05-27', 'lorem', 1, 'jpg', 's2344', 'http://localhost/ggnomotor/assets/documentos/jpg/2018-05-270924.jpg', 'Lorem ipsum sorates progatium lorates.');
 
 -- --------------------------------------------------------
 
@@ -175,6 +188,52 @@ INSERT INTO `reunioes` (`id_reunioes`, `assunto`, `id_local`, `data`, `hora_inic
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `reunioes_comites`
+--
+
+CREATE TABLE `reunioes_comites` (
+  `id_reunioescomites` int(11) NOT NULL,
+  `assunto` text COLLATE utf8_bin NOT NULL,
+  `id_comite` int(11) NOT NULL,
+  `id_local` int(11) NOT NULL,
+  `data` date NOT NULL,
+  `hora_inicial` time NOT NULL,
+  `hora_final` time NOT NULL,
+  `descricao` text COLLATE utf8_bin NOT NULL,
+  `participantes` text COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Extraindo dados da tabela `reunioes_comites`
+--
+
+INSERT INTO `reunioes_comites` (`id_reunioescomites`, `assunto`, `id_comite`, `id_local`, `data`, `hora_inicial`, `hora_final`, `descricao`, `participantes`) VALUES
+(1, 'Lorem Ipsum', 1, 2, '2018-05-29', '09:00:00', '11:00:00', 'Ipsum Lorem ', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `setor`
+--
+
+CREATE TABLE `setor` (
+  `id_setor` int(11) NOT NULL,
+  `setor` varchar(80) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Extraindo dados da tabela `setor`
+--
+
+INSERT INTO `setor` (`id_setor`, `setor`) VALUES
+(1, 'Lorem'),
+(2, 'Ipsum'),
+(3, 'Quatzus'),
+(4, 'Premateur');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `tipodoc`
 --
 
@@ -183,6 +242,20 @@ CREATE TABLE `tipodoc` (
   `tipo` varchar(256) COLLATE utf8_general_mysql500_ci NOT NULL,
   `pasta` varchar(256) COLLATE utf8_general_mysql500_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
+--
+-- Extraindo dados da tabela `tipodoc`
+--
+
+INSERT INTO `tipodoc` (`id_tipo`, `tipo`, `pasta`) VALUES
+(1, 'Microsoft Word', 'doc'),
+(2, 'Libreoffice Write', 'odt'),
+(3, 'Microsoft Excel', 'xls'),
+(4, 'Libreoffice Calc', 'ods'),
+(5, 'PDF', 'pdf'),
+(6, 'Imagem', 'jpg'),
+(7, 'Microsft Powerpoint', 'ppt'),
+(8, 'Libreoffice Impress', 'odp');
 
 -- --------------------------------------------------------
 
@@ -236,6 +309,12 @@ INSERT INTO `usuarios` (`id_usuarios`, `nome`, `senha`, `ip`) VALUES
 --
 
 --
+-- Indexes for table `comites`
+--
+ALTER TABLE `comites`
+  ADD PRIMARY KEY (`id_comite`);
+
+--
 -- Indexes for table `documentos`
 --
 ALTER TABLE `documentos`
@@ -278,6 +357,18 @@ ALTER TABLE `reunioes`
   ADD PRIMARY KEY (`id_reunioes`);
 
 --
+-- Indexes for table `reunioes_comites`
+--
+ALTER TABLE `reunioes_comites`
+  ADD PRIMARY KEY (`id_reunioescomites`);
+
+--
+-- Indexes for table `setor`
+--
+ALTER TABLE `setor`
+  ADD PRIMARY KEY (`id_setor`);
+
+--
 -- Indexes for table `tipodoc`
 --
 ALTER TABLE `tipodoc`
@@ -303,7 +394,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id_documentos` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_documentos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `gestao`
 --
@@ -335,10 +426,20 @@ ALTER TABLE `noticias`
 ALTER TABLE `reunioes`
   MODIFY `id_reunioes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
+-- AUTO_INCREMENT for table `reunioes_comites`
+--
+ALTER TABLE `reunioes_comites`
+  MODIFY `id_reunioescomites` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `setor`
+--
+ALTER TABLE `setor`
+  MODIFY `id_setor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT for table `tipodoc`
 --
 ALTER TABLE `tipodoc`
-  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `unidades`
 --

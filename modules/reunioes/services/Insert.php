@@ -22,11 +22,11 @@ $post=[NULL,$obj->assunto,$obj->comite,$obj->local,$data,$inicio,$final,$obj->de
    $service=new Lib\ServiceManager\ServiceManager;
 
 
- //$service->InsertController(['table'=>'reunioes_comites','fields'=>['id_reunioescomites','assunto','id_comite','id_local','data','hora_inicial','hora_final', 'descricao','participantes'],'insert'=>$post]);
+ $service->InsertController(['table'=>'reunioes_comites','fields'=>['id_reunioescomites','assunto','id_comite','id_local','data','hora_inicial','hora_final', 'descricao','participantes'],'insert'=>$post]);
 
  
 
-$teste=$obj->comite;
+$teste=$obj->descricao;
   $fp = fopen("teste.txt", "a");
    
   // Escreve "exemplo de escrita" no bloco1.txt
