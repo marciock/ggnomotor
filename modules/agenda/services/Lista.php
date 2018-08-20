@@ -6,11 +6,10 @@ require_once('../config/PathConfig.php');
 
     $service=new Lib\ServiceManager\ServiceManager;
 
-    $join='INNER JOIN local  ON (reunioes.id_local=local.id_local)';
+   // $join='INNER JOIN local  ON (reunioes.id_local=local.id_local)';
    // $lista=$service->ListController(['join'=>$join]);
   $lista= $service->ListController(['table'=>'reunioes',
-  'fields'=>['reunioes.id_reunioes','reunioes.assunto','reunioes.id_local','reunioes.data','reunioes.hora_inicial','reunioes.hora_final','reunioes.descricao','reunioes.participantes','local.id_local','local.cidade'],
-  'join'=>$join]);
+  'fields'=>['id_reunioes','assunto','local','data','hora_inicial','hora_final','descricao','participantes']]);
 
 // var_dump($lista);
    $service->ListView($lista);

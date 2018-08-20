@@ -1,5 +1,5 @@
 <?php
-namespace Modules\reunioes\controllers;
+namespace Modules\agenda\controllers;
 
 use Lib\PDOBuilder\InsertPDO;
 use Lib\ServiceManager\Controller;
@@ -14,11 +14,19 @@ class InsertController extends Controller{
        // echo $options['host'];
         $insert= new InsertPDO($options);
 
-     $insert
-            ->table($this->attributes['table'])
-            ->fields($this->attributes['fields'])
-            ->insert($this->attributes['insert']);
-           
-       // return "deu certo";
+        $insert
+          ->table($this->attributes['table'])
+          ->fields($this->attributes['fields'])
+          ->insert($this->attributes['insert']);
+
+        
     }
 }
+/*
+
+$insert
+    ->table($this->attributes['table'])
+    ->fields($this->attributes['fields'])
+    ->insert($this->attributes['insert']);
+
+*/

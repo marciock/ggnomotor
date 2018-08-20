@@ -1,5 +1,5 @@
 <?php
-namespace Modules\reunioes\controllers;
+namespace Modules\agenda\controllers;
 
 use Lib\PDOBuilder\SelectPDO;
 use Lib\ServiceManager\Controller;
@@ -17,7 +17,6 @@ class ListController extends Controller{
    return  $select
             ->table($this->attributes['table'])
             ->fields($this->attributes['fields'])
-            ->join($this->attributes['join'])
             ->select();
            
 

@@ -3,7 +3,7 @@ namespace Lib\PDOBuilder;
 
 use Lib\PDOBuilder\Connector;
 
-class UpdatePDO extends Connector{
+class DeletePDO extends Connector{
 
     private $clausules=[];
 
@@ -25,7 +25,7 @@ class UpdatePDO extends Connector{
 
     }
 
-    public function delete($filters){
+    public function delete(){
         $table=isset($this->clausules['table']) ? $this->clausules['table']:'<table>';
         $join=isset($this->clausules['join']) ? $this->clausules['join']:'';
 
@@ -54,20 +54,31 @@ class UpdatePDO extends Connector{
             }
             $sql=implode(' ',$command);
 
-            return $this->executeDelete($sql,$filters);
+          //  echo $filters;
+
+            return $this->executeDelete($sql);
     }
     private final function statement($sql){
         return $this->connect()->prepare($sql);
     }
-    protected final function execute($sql,array $values){
+    protected final function execute($sql){
+      
+      
         $statement=$this->statement($sql);
-        if($statement && $statement->execute(array_values($values))){
-            return $statement->rowCount();
-        }
-        return null;
+      //  echo $values[0];
+        //echo $sql;
+       // $statement.bindParam(1,$values);
+        $statement->execute($sql);
+       
+      
+      //  return $statement->rowCount();
+      
+       
     }
-    public function executeDelete($sql, array $values){
+    public function executeDelete($sq){
 
-        return $this->execute($sql,$values);
+       // echo $values;
+        
+        return $this->execute($sql);
     }
 }

@@ -6,6 +6,9 @@ header('Content-Type:application/json; charset=utf-8');
 
 
 $fileName=$_FILES['imagem']['tmp_name'];
+
+
+
 $uploadDir='/var/www/ggnomotor/assets/noticias/';
 //$myDir='http://localhost/ggnomotor/assets/noticias/'.$_POST['tipo'].'/';
 $data="".date('Y-m-d').date('H').date('i')."";
@@ -23,8 +26,8 @@ $post=[NULL,$_POST['id_unidade'],$_POST['titulo'],$_POST['resumo'],$_POST['descr
 
 
  $service->InsertController(['table'=>'noticias','fields'=>['id_noticias','id_unidade','titulo','resumo','descricao','data','imagem'],'insert'=>$post]);
-
-$teste=json_encode($post);
+//json_encode($post);
+$teste=$fileName;
 
   $fp = fopen("teste.txt", "a");
    

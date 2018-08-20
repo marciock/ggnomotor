@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\usuarios\views;
+namespace Modules\agenda\views;
 
 
 /**

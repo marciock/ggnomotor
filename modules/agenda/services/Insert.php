@@ -1,18 +1,18 @@
 <?php
 require_once('../../../vendor/autoload.php');
 require_once('../config/PathConfig.php');
-header('Content-Type:application/json; charset=utf-8');
+//header('Content-Type:application/json; charset=utf-8');
 
-ini_set('default_charset','UTF-8');
+/*ini_set('default_charset','UTF-8');
 
 $json = file_get_contents('php://input');
 $json=utf8_encode($json);
-$obj  = json_decode($json);
+$obj  = json_decode($json);*/
 
-$data=date('Y-m-d'.strtotime($obj->data));
-$inicio=date('H:i:s',strtotime($obj->inicio));
-$final=date('H:i:s',strtotime($obj->termino));
-$post=[NULL,$obj->assunto,$obj->local,$data,$inicio,$final,$obj->descricao,$obj->participantes];
+$data=$_POST['data'];
+$inicio=date('H:i:s',strtotime($_POST['inicio']));
+$final=date('H:i:s',strtotime($_POST['termino']));
+$post=[NULL,$_POST['assunto'],$_POST['local'],$data,$inicio,$final,$_POST['descricao'],$_POST['participantes']];
 
 
 
@@ -22,11 +22,11 @@ $post=[NULL,$obj->assunto,$obj->local,$data,$inicio,$final,$obj->descricao,$obj-
    $service=new Lib\ServiceManager\ServiceManager;
 
 
- $service->InsertController(['table'=>'reunioes','fields'=>['id_reunioes','assunto','id_local','data','hora_inicial','hora_final', 'descricao','participantes'],'insert'=>$post]);
+$service->InsertController(['table'=>'reunioes','fields'=>['id_reunioes','assunto','local','data','hora_inicial','hora_final','descricao','participantes'],'insert'=>$post]);
 
- 
 
-$teste=$inicio;
+
+$teste=$_POST['local'];
   $fp = fopen("teste.txt", "a");
    
   // Escreve "exemplo de escrita" no bloco1.txt
@@ -34,3 +34,5 @@ $teste=$inicio;
    
   // Fecha o arquivo
   fclose($fp); 
+
+  return var_dump($post);

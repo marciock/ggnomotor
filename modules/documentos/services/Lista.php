@@ -7,7 +7,7 @@ require_once('../config/PathConfig.php');
     $service=new Lib\ServiceManager\ServiceManager;
 
   //  $join='INNER JOIN setor  ON (documentos.id_setor=setor.id_setor)';
-   $lista= $service->ListController(['table'=>'documentos','fields'=>['id_documentos','data','titulo','id_setor','tipo','chave','arquivo','descricao']]);
+   $lista= $service->ListController(['table'=>'documentos','fields'=>['id_documentos','data','titulo','id_tipo','arquivo','descricao']]);
 
     $service->ListView($lista);
    

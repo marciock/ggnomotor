@@ -1,0 +1,8 @@
+//
+
+
+modo de uso
+
+$connector_config=new MYSQLConnectorConfig('localhos','dbname','user','password');
+
+$connector=new PDOConnector($connector_config);

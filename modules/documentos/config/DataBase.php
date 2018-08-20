@@ -1,2 +1,2 @@
 <?php
-return ['host'=>'localhost','port'=>'','database'=>'ggno','user'=>'phpmyadmin','password'=>'123'];
+return ['host'=>'localhost','port'=>'','database'=>'ggno','user'=>'sanepar','password'=>'1234'];

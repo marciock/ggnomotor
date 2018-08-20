@@ -14,7 +14,7 @@ class InsertController extends Controller{
        // echo $options['host'];
         $insert= new InsertPDO($options);
 
-     $insert
+   return  $insert
             ->table($this->attributes['table'])
             ->fields($this->attributes['fields'])
             ->insert($this->attributes['insert']);

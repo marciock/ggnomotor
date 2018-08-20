@@ -19,7 +19,6 @@ class InsertController extends Controller{
             ->fields($this->attributes['fields'])
             ->insert($this->attributes['insert']);
            
-        
        // return "deu certo";
     }
 }

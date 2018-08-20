@@ -70,16 +70,15 @@ class SelectPDO extends Connector{
         foreach($clausules as $key=>$clausule){
             if(isset($this->clausules[$key])){
                 $value=$this->clausules[$key];
-              
                 if(is_array($value)){
                     $value=implode($clausule['separator'],$this->clausules[$key]);
-                   
                 }
                 $command[]=$clausule['instruction'].' '.$value;
-                
             }
         }
         $sql=implode(' ',$command);
+
+       // echo $sql;
         return $this->executeSelect($sql,$values);
     }
     private final function statement($sql){
