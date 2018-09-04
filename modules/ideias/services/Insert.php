@@ -1,14 +1,11 @@
 <?php
 require_once('../../../vendor/autoload.php');
 require_once('../config/PathConfig.php');
-header('Content-Type:application/json; charset=utf-8');
-
-$json = file_get_contents('php://input');
-$json=utf8_encode($json);
-$obj  = json_decode($json);
 
 
-$post=[NULL,$obj->chave,$obj->nome,$obj->titulo,$obj->descricao];
+
+$data="".date('Y-m-d');
+$post=[NULL,$_POST['chave'],$_POST['nome'],$_POST['titulo'],$_POST['descricao'],$data];
 
 
 

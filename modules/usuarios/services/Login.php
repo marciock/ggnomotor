@@ -25,7 +25,7 @@ $where=[$conca];
 
  $service->ListView($login);
 
-$teste=$conca;
+/*$teste=$conca;
   $fp = fopen("teste.txt", "a");
    
   // Escreve "exemplo de escrita" no bloco1.txt
@@ -33,3 +33,4 @@ $teste=$conca;
    
   // Fecha o arquivo
   fclose($fp); 
+  */

@@ -1,5 +1,5 @@
 <?php
-namespace Modules\usuarios\controllers;
+namespace Modules\ideias\controllers;
 
 use Lib\PDOBuilder\InsertPDO;
 use Lib\ServiceManager\Controller;

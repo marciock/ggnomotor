@@ -9,9 +9,9 @@ require_once('../config/PathConfig.php');
 $id=$_GET['id'];
     $service=new Lib\ServiceManager\ServiceManager;
 
-    $join='INNER JOIN icon ON (icon.id_icon=privilegio.id_icon) WHERE id_usuarios='.$id;
+    $join='INNER JOIN icon ON (icon.id_icon=privilegio.id_icon)  WHERE id_usuarios='.$id;
    // $lista=$service->ListController(['join'=>$join]);
-  $lista=$service->ListController(['table'=>'privilegio','fields'=>['privilegio.id_privilegio','privilegio.id_usuarios','privilegio.id_icon','icon.id_icon','icon.icon','icon.disabled','icon.title','icon.url','icon.component'],'join'=>$join]);
+  $lista=$service->ListController(['table'=>'privilegio','fields'=>['privilegio.id_privilegio','privilegio.id_usuarios','privilegio.id_icon','privilegio.ativo','icon.id_icon','icon.icon','icon.disabled','icon.title','icon.url','icon.component'],'join'=>$join]);
  
 //,'icon.icon','icon.title','icon.url','icon.component'
 // var_dump($lista);
@@ -27,3 +27,5 @@ $id=$_GET['id'];
   
    fclose($fp); 
 */
+
+//,'usuarios.id_usuarios','usuarios.nome','usuarios.chave','usuarios.email'

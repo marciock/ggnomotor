@@ -9,8 +9,15 @@ $fileName=$_FILES['arquivo']['tmp_name'];
 $uploadDir='/var/www/ggnomotor/assets/indicadores/';
 $myDir='http://localhost/ggnomotor/assets/indicadores/';
 
-$uploadFile=$uploadDir.$_FILES['arquivo']['name'];
-$correctPath=$myDir.$_FILES['arquivo']['name'];
+
+$myArray=explode('.', $_FILES['arquivo']['name']);
+  $extensions=end($myArray);
+
+
+  $data="".date('Y-m-d').date('H').date('i').time().".".$extensions;
+  //$uploadFile=$uploadDir.$_FILES['arquivo']['name'];
+  $uploadFile=$uploadDir.$data;
+  $correctPath=$myDir.$data;
   move_uploaded_file($fileName,$uploadFile);
 
 

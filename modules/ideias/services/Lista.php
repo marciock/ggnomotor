@@ -7,7 +7,7 @@ require_once('../config/PathConfig.php');
     $service=new Lib\ServiceManager\ServiceManager;
 
 
-  $lista= $service->ListController(['table'=>'ideias','fields'=>['id_ideias','chave','nome','titulo','descricao']]);
+  $lista= $service->ListController(['table'=>'ideias','fields'=>['id_ideias','chave','nome','titulo','descricao','data']]);
 
     $service->ListView($lista);
    
