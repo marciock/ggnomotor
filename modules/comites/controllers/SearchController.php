@@ -17,7 +17,7 @@ class SearchController extends Controller{
    return  $select
             ->table($this->attributes['table'])
             ->fields($this->attributes['fields'])
-            ->where($this->attributes['where'])
+            ->join($this->attributes['join'])
             ->select();
            
 

@@ -4,10 +4,8 @@ require_once('../config/PathConfig.php');
 //header('Content-Type:application/json; charset=utf-8');
 
 
-
-
- 
-   $values=[$_POST['id'],$_POST['chave'],$_POST['nome'],md5($_POST['senha']),$_POST['email'],$_POST['descricao']];
+$values='';
+   
    $id=$_POST['id'];
     $where="id_usuarios = ?";
     //echo $nome;
@@ -16,12 +14,21 @@ require_once('../config/PathConfig.php');
     
 
 
+    if($_POST['senha']==='undefined'){
+      $values=[$_POST['id'],$_POST['chave'],$_POST['nome'],$_POST['email'],$_POST['descricao']];
+      $service->UpdateController(['table'=>'usuarios','fields'=>['id_usuarios','chave','nome','email','descricao'],'where'=>$where,'values'=>$values,'filters'=>$id]);
+    }else{
+      $values=[$_POST['id'],$_POST['chave'],$_POST['nome'],md5($_POST['senha']),$_POST['email'],$_POST['descricao']];
+      $service->UpdateController(['table'=>'usuarios','fields'=>['id_usuarios','chave','nome','senha','email','descricao'],'where'=>$where,'values'=>$values,'filters'=>$id]);
+
+    }
  
-  $service->UpdateController(['table'=>'usuarios','fields'=>['id_usuarios','chave','nome','senha','email','descricao'],'where'=>$where,'values'=>$values,'filters'=>$id]);
+  
+  
   
 
 
-$teste=$_POST['id'];
+/*$teste=$_POST['nome'];
   $fp = fopen("teste.txt", "a");
    
  
@@ -29,4 +36,4 @@ $teste=$_POST['id'];
    
 
   fclose($fp); 
-  
+  */

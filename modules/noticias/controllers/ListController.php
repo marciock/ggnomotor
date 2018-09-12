@@ -17,8 +17,6 @@ class ListController extends Controller{
    return  $select
             ->table($this->attributes['table'])
             ->fields($this->attributes['fields'])
-            ->where($this->attributes['where'])
-            ->limit($this->attributes['limit'])
             ->select();
            
 

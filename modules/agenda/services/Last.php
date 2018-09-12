@@ -6,9 +6,9 @@ require_once('../config/PathConfig.php');
 
     $service=new Lib\ServiceManager\ServiceManager;
 
-   
-  $lista= $service->ListController(['table'=>'reunioes',
-  'fields'=>['id_reunioes','assunto','local','data','hora_inicial','hora_final','descricao','participantes']]);
+   $join=$join='ORDER BY data DESC LIMIT 5';
+  $lista= $service->LastController(['table'=>'reunioes',
+  'fields'=>['id_reunioes','assunto','local','data','hora_inicial','hora_final','descricao','participantes'],'join'=>$join]);
 
 // var_dump($lista);
    $service->ListView($lista);

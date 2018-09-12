@@ -4,39 +4,24 @@ require_once('../config/PathConfig.php');
 
 
 
-$post=[NULL,$_POST['chave'],$_POST['nome'],' ',$_POST['email'],$_POST['descricao']];
+$post=[NULL,$_POST['comite'],$_POST['usuarios']];
 
 
-$clausules="chave LIKE '%".$_POST['chave']."%'";
+//$clausules="chave LIKE '%".$_POST['chave']."%'";
  
 
    $service=new Lib\ServiceManager\ServiceManager;
 
+   
 
- $service->InsertController(['table'=>'usuarios','fields'=>['id_usuarios','chave','nome','senha','email','descricao'],'insert'=>$post]);
-
- $usuario= $service->SearchController(['table'=>'usuarios','fields'=>['id_usuarios','chave','nome','senha','email','descricao'],'where'=>$clausules]);
-
- $encode=json_encode($usuario);
-
- $decode=json_decode($encode);
- $user="";
  
- 
- foreach ($decode as $key) {
-     $user=$key->id_usuarios;
- }
+   $service->InsertController(['table'=>'integrantes','fields'=>['id_integrantes','id_comite','id_usuarios'],'insert'=>$post]);
 
-
-
+   
  //$icones=$service->ListController(['table'=>'icon','fields'=>['id_icon','icon','disabled','title','url','component']]);
-$values=[NULL,$_POST['comite'],$user];
- 
-  $service->InsertController(['table'=>'integrantes','fields'=>['id_integrantes','id_comite','id_usuarios'],'insert'=>$values]);
- 
 
 
-
+/*
 $teste=$values[1];
   $fp = fopen("teste.txt", "a");
    
@@ -45,4 +30,4 @@ $teste=$values[1];
    
   // Fecha o arquivo
   fclose($fp); 
-  
+  */

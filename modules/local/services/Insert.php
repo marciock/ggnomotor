@@ -1,8 +1,8 @@
 <?php
 require_once('../../../vendor/autoload.php');
 require_once('../config/PathConfig.php');
-header('Content-Type:application/json; charset=utf-8');
 
+header('Content-Type:application/json; charset=utf-8');
 
 
 

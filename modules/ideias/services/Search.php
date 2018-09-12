@@ -6,15 +6,26 @@ require_once('../config/PathConfig.php');
 
     $service=new Lib\ServiceManager\ServiceManager;
 
-    $where='id_reunioes ='.$_GET['id'];
+    $clausules='id_ideias ='.$_GET['id'];
 
    
 
    // $join='INNER JOIN cidades ON (agua.id_cidade=cidades.id_cidade) INNER JOIN servidor ON (agua.id_servidor=servidor.id_servidor) '.$clausules;
 
-    $lista= $service->SearchController(['table'=>'reunioes','fields'=>['id_reunioes','assunto','local','data','hora_inicial','hora_final','descricao','participantes'],'where'=>$where]);
+    $lista= $service->SearchController(['table'=>'ideias','fields'=>['id_ideias','chave','nome','titulo','descricao','data'],'where'=>$clausules]);
 
   
-    $service->ListView($lista);
-    
 
+    $service->ListView($lista);
+   
+
+   /* $teste=$_GET['id'];
+    $fp = fopen("teste.txt", "a");
+     
+   
+    $escreve = fwrite($fp, $teste);
+     
+  
+    fclose($fp); 
+
+*/

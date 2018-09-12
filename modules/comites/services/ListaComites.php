@@ -8,7 +8,7 @@ require_once('../config/PathConfig.php');
 
     $id=$_GET['id'];
 
-   $join='INNER JOIN usuarios ON (comites.representante=usuarios.id_usuarios) WHERE id_comite='.$id;
+   $join='INNER JOIN usuarios ON (comites.representante=usuarios.id_usuarios)';
 
    
 

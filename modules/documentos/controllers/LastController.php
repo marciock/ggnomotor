@@ -1,5 +1,5 @@
 <?php
-namespace Modules\indicadores\controllers;
+namespace Modules\documentos\controllers;
 
 use Lib\PDOBuilder\SelectPDO;
 use Lib\ServiceManager\Controller;

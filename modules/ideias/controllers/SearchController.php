@@ -1,12 +1,12 @@
 <?php
-namespace Modules\indicadores\controllers;
+namespace Modules\ideias\controllers;
 
 use Lib\PDOBuilder\SelectPDO;
 use Lib\ServiceManager\Controller;
 
 
 
-class LastController extends Controller{
+class SearchController extends Controller{
 
 
     protected function create(){
@@ -17,7 +17,7 @@ class LastController extends Controller{
    return  $select
             ->table($this->attributes['table'])
             ->fields($this->attributes['fields'])
-            ->join($this->attributes['join'])
+            ->where($this->attributes['where'])
             ->select();
            
 

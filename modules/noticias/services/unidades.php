@@ -6,13 +6,13 @@ require_once('../config/PathConfig.php');
 
 $myGet=$_GET['unidade'];
 
-$myWhere='id_unidade='.$myGet;
+$join='WHERE id_unidade='.$myGet.' ORDER BY id_noticias DESC LIMIT 1';
 
 
     $service=new Lib\ServiceManager\ServiceManager;
 
 
-    $lista= $service->ListController(['table'=>'noticias','fields'=>['id_noticias','id_unidade','titulo','resumo','descricao','data','imagem'],'where'=>$myWhere,'limit'=>'1']);
+    $lista= $service->SearchController(['table'=>'noticias','fields'=>['id_noticias','id_unidade','titulo','resumo','descricao','data','imagem1','imagem2','imagem3','imagem4','imagem5'],'join'=>$join]);
 
     $service->ListView($lista);
    

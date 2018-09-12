@@ -1,12 +1,12 @@
 <?php
-namespace Modules\indicadores\controllers;
+namespace Modules\comites\controllers;
 
 use Lib\PDOBuilder\SelectPDO;
 use Lib\ServiceManager\Controller;
 
 
 
-class LastController extends Controller{
+class ProjetosListController extends Controller{
 
 
     protected function create(){
